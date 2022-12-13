@@ -9,8 +9,13 @@ func Run() {
 	route := gin.Default()
 
 	route.GET("/", func(context *gin.Context) {
-		context.String(http.StatusOK, "Welcome to the documentation verification service!")
+		context.HTML(http.StatusOK, "layouts/index.tmpl", gin.H{"title": "Stats Informer"})
 	})
+
+	route.Static("/css", "static/css")
+	route.Static("/js", "static/js")
+
+	route.LoadHTMLGlob("templates/**/*")
 
 	err := route.Run()
 	if err != nil {
