@@ -14,6 +14,7 @@ func Run() {
 
 	route.Static("/css", "static/css")
 	route.Static("/js", "static/js")
+	route.Static("/assets", "static/assets")
 
 	route.LoadHTMLGlob("templates/**/*")
 

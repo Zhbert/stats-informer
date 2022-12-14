@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ .title }}</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/informer.css" rel="stylesheet">
     </head>
     <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-light border_style">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Stats Informer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,7 +33,9 @@
                             </ul>
                         </li>
                     </ul>
-                    <span class="navbar-text">Navbar text with an inline element</span>
+                    <div class="credits">
+                        Made with <span class="page__icon page__icon_heart"></span> by <a href="https://flant.com" target="_blank">Flant</a>
+                    </div>
                 </div>
             </div>
         </nav>
