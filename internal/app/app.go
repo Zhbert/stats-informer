@@ -9,7 +9,7 @@ func Run() {
 	route := gin.Default()
 
 	route.GET("/", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "layouts/index.tmpl", gin.H{"title": "Stats Informer"})
+		context.HTML(http.StatusOK, "main.tmpl", gin.H{"title": "Stats Informer"})
 	})
 
 	route.Static("/css", "static/css")
