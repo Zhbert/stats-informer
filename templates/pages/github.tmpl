@@ -1,5 +1,9 @@
-{{template "index" .}}
+{{ define "github.tmpl" }}
 
-    {{ define "content" }}
-        <h1>Statistics of GitHub projects</h1>
-    {{ end }}
+    {{template "header" .}}
+
+    {{template "navbar" .}}
+        <h1>GitHub Statistics</h1>
+    {{template "footer" .}}
+
+{{ end }}
