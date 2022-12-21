@@ -10,7 +10,21 @@
         <div class="row g-2">
             <div class="col-6">
                 <div class="p-3 border_style bg-light">
-                    <b>Name</b>: {{ .data.Name}} <br>
+                    <div class="text-center"><b>About</b></div>
+                    <b>Name</b>: <a href="{{ .data.GitHubURL}}">{{ .data.Name}}</a> <br>
+                    <b>Full name</b>: {{ .data.FullName}} <br>
+                    <b>License</b>: {{ .data.License}} <br>
+                    <b>Private</b>: {{ .data.Private}} <br>
+                    <b>Description</b>: {{ .data.Description}} <br>
+                    <b>Home Page</b>: <a href="{{ .data.HomePage}}">{{ .data.HomePage}}</a> <br>
+                    <hr>
+                    <div class="text-center"><b>Stats</b><br></div>
+                    <ul>
+                        <li><b>Stars</b>: {{ .data.Stars}}</li>
+                        <li><b>Watchers</b>: {{ .data.Watchers}}</li>
+                        <li><b>Opened Issues</b>: {{ .data.OpenIssues}}</li>
+                        <li><b>Forks</b>: {{ .data.Forks}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
