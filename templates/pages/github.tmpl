@@ -5,7 +5,16 @@
     {{template "navbar" .}}
     <div class="mt-2 text-center">
         <h2>GitHub Statistics</h2>
-        Name: {{ .data.Name}}
+    </div>
+    <div class="container">
+        <div class="row justify-content-evenly">
+            <div class="col-5 border_style m-2 bg-light">
+                <b>Name</b>: {{ .data.Name}} <br>
+            </div>
+            <div class="col-5 border_style m-2 bg-light">
+                One of two columns
+            </div>
+        </div>
     </div>
     {{template "footer" .}}
 
