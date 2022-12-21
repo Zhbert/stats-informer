@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/Zhbert/stats-informer/m/v2/internal/controllers/structs"
 	"github.com/Zhbert/stats-informer/m/v2/internal/services/config"
 	"github.com/Zhbert/stats-informer/m/v2/internal/services/github"
@@ -11,26 +10,27 @@ import (
 
 func GitHubPage(context *gin.Context) {
 	reposList := config.GetListOfRepos()
+	dataOfRepos := make([]structs.ViewData, 0)
 	for _, url := range reposList {
-		fmt.Println(url)
+		data := github.GetRepoInfo(url)
+		ViewData := structs.ViewData{}
+
+		ViewData.Name = data.Name
+		ViewData.FullName = data.FullName
+		ViewData.Private = data.Private
+		ViewData.Description = data.Description
+		ViewData.HomePage = data.Homepage
+		ViewData.Stars = data.StargazersCount
+		ViewData.Watchers = data.WatchersCount
+		ViewData.OpenIssues = data.OpenIssuesCount
+		ViewData.Forks = data.ForksCount
+		ViewData.License = data.License.Name
+		ViewData.GitHubURL = data.HTMLURL
+
+		dataOfRepos = append(dataOfRepos, ViewData)
 	}
-
-	data := github.GetRepoInfo("https://api.github.com/repos/werf/werf")
-	viewData := structs.ViewData{}
-
-	viewData.Name = data.Name
-	viewData.FullName = data.FullName
-	viewData.Private = data.Private
-	viewData.Description = data.Description
-	viewData.HomePage = data.Homepage
-	viewData.Stars = data.StargazersCount
-	viewData.Watchers = data.WatchersCount
-	viewData.OpenIssues = data.OpenIssuesCount
-	viewData.Forks = data.ForksCount
-	viewData.License = data.License.Name
-	viewData.GitHubURL = data.HTMLURL
 
 	context.HTML(http.StatusOK, "github.tmpl", gin.H{
 		"title": "GitHub Projects",
-		"data":  viewData})
+		"data":  dataOfRepos})
 }
