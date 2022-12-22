@@ -30,7 +30,12 @@ func GitHubPage(context *gin.Context) {
 		dataOfRepos = append(dataOfRepos, ViewData)
 	}
 
+	limit, count := github.GetCountsOfResponses()
+
 	context.HTML(http.StatusOK, "github.tmpl", gin.H{
-		"title": "GitHub Projects",
-		"data":  dataOfRepos})
+		"title":      "GitHub Projects",
+		"data":       dataOfRepos,
+		"respLimit":  limit,
+		"respCount":  count,
+		"totalRepos": len(reposList)})
 }

@@ -1,8 +1,10 @@
 package app
 
 import (
+	"fmt"
 	"github.com/Zhbert/stats-informer/m/v2/internal/controllers"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -19,6 +21,12 @@ func Run() {
 	route.Static("/assets", "static/assets")
 
 	route.LoadHTMLGlob("templates/**/*")
+
+	resp, rerr := http.Get("https://api.github.com/users/octocat")
+	if rerr != nil {
+		log.Fatalln(rerr)
+	}
+	fmt.Println(resp.Header.Get("x-ratelimit-limit"))
 
 	err := route.Run()
 	if err != nil {

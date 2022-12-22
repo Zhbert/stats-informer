@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func GetRepoInfo(path string) structs.GitHubStruct {
@@ -24,4 +25,21 @@ func GetRepoInfo(path string) structs.GitHubStruct {
 		fmt.Println(jsonErr)
 	}
 	return data
+}
+
+func GetCountsOfResponses() (int, int) {
+	limit := 0
+	remaining := 0
+
+	resp, respError := http.Get("https://api.github.com/users/octocat")
+	if respError != nil {
+		log.Fatalln(respError)
+	}
+	if i, err := strconv.Atoi(resp.Header.Get("x-ratelimit-limit")); err == nil {
+		limit = i
+	}
+	if i, err := strconv.Atoi(resp.Header.Get("x-ratelimit-remaining")); err == nil {
+		remaining = i
+	}
+	return limit, remaining
 }
