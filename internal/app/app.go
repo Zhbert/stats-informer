@@ -24,6 +24,7 @@ import (
 	"net/http"
 )
 
+// Run The function that starts the web server
 func Run() {
 	route := gin.Default()
 

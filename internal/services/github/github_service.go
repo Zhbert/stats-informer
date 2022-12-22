@@ -26,6 +26,7 @@ import (
 	"strconv"
 )
 
+// GetRepoInfo The function of getting data from the repository using the GitHub API
 func GetRepoInfo(path string) structs.GitHubStruct {
 	resp, err := http.Get(path)
 	if err != nil {
@@ -43,6 +44,7 @@ func GetRepoInfo(path string) structs.GitHubStruct {
 	return data
 }
 
+// GetCountsOfResponses Function for getting GitHub API limits for the current session
 func GetCountsOfResponses() (int, int) {
 	limit := 0
 	remaining := 0

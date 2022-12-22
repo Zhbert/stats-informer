@@ -24,6 +24,7 @@ import (
 	"net/http"
 )
 
+// GitHubPage Controller of a page with GitHub statistics
 func GitHubPage(context *gin.Context) {
 	reposList := config.GetListOfRepos()
 	dataOfRepos := make([]structs.ViewData, 0)

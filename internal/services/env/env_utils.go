@@ -22,6 +22,7 @@ import (
 	"time"
 )
 
+// GetPathToFile Function of getting the path to the configuration file
 func GetPathToFile() (string, bool) {
 	path, pathExists := os.LookupEnv("ST_REPOS_FILE")
 	if !pathExists {

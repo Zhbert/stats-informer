@@ -18,6 +18,7 @@ package structs
 
 import "time"
 
+// GitHubStruct Data structure for deserialization of the received response from the GitHub API
 type GitHubStruct struct {
 	ID       int    `json:"id"`
 	NodeID   string `json:"node_id"`

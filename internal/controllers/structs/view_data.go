@@ -16,6 +16,7 @@
 
 package structs
 
+// ViewData The structure of the data passed to the template
 type ViewData struct {
 	Name        string
 	GitHubURL   string

@@ -18,6 +18,9 @@ package main
 
 import "github.com/Zhbert/stats-informer/m/v2/internal/app"
 
+/*
+ * Main function, launches the application
+ */
 func main() {
 	app.Run()
 }

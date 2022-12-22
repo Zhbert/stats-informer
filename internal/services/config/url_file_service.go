@@ -25,6 +25,7 @@ import (
 	"time"
 )
 
+// GetListOfRepos Function for getting a list of repositories from a configuration file
 func GetListOfRepos() []string {
 	listOfRepos := make([]string, 0)
 	filename, err := env.GetPathToFile()
