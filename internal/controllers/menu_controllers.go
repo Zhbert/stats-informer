@@ -17,6 +17,7 @@
 package controllers
 
 import (
+	"github.com/Zhbert/stats-informer/m/v2/internal/common"
 	"github.com/Zhbert/stats-informer/m/v2/internal/controllers/structs"
 	"github.com/Zhbert/stats-informer/m/v2/internal/services/config"
 	"github.com/gin-gonic/gin"
@@ -35,5 +36,6 @@ func GitHubPage(context *gin.Context) {
 		"data":       dataOfRepos,
 		"respLimit":  limit,
 		"respCount":  count,
+		"version":    common.GetVersion(),
 		"totalRepos": len(reposList)})
 }

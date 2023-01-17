@@ -18,6 +18,7 @@ package app
 
 import (
 	"fmt"
+	"github.com/Zhbert/stats-informer/m/v2/internal/common"
 	"github.com/Zhbert/stats-informer/m/v2/internal/controllers"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -29,7 +30,9 @@ func Run() {
 	route := gin.Default()
 
 	route.GET("/", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "main.tmpl", gin.H{"title": "Stats Informer"})
+		context.HTML(http.StatusOK, "main.tmpl", gin.H{
+			"title":   "Stats Informer",
+			"version": common.GetVersion()})
 	})
 	route.GET("/github", controllers.GitHubPage)
 	route.POST("/github", controllers.GetGitHubPage)
