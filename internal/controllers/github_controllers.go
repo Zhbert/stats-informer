@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/Zhbert/stats-informer/m/v2/internal/controllers/structs"
 	"github.com/Zhbert/stats-informer/m/v2/internal/services/config"
 	"github.com/Zhbert/stats-informer/m/v2/internal/services/github"
@@ -11,7 +10,6 @@ import (
 
 // GetGitHubPage POST Controller of a page with GitHub statistics
 func GetGitHubPage(context *gin.Context) {
-	fmt.Println("TRUE")
 	reposList := config.GetListOfRepos()
 	dataOfRepos := make([]structs.ViewData, 0)
 	for _, url := range reposList {
