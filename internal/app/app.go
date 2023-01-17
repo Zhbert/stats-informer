@@ -32,6 +32,7 @@ func Run() {
 		context.HTML(http.StatusOK, "main.tmpl", gin.H{"title": "Stats Informer"})
 	})
 	route.GET("/github", controllers.GitHubPage)
+	route.POST("/github", controllers.GetGitHubPage)
 
 	route.Static("/css", "static/css")
 	route.Static("/js", "static/js")
