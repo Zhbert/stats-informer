@@ -8,9 +8,12 @@
         <div class="mt-2">Request limit: <b>{{ .respLimit}}</b> | Requests left: <b>{{ .respCount}}</b></div>
         <div class="mt-1">Total repositories: <b>{{ .totalRepos}}</b></div>
     </div>
-    <div class="text-center mt-1">
-        <button type="button" class="btn btn-success">Get stats from GitHub</button>
-    </div>
+    <form method="post" action="/github">
+        <div class="text-center mt-1">
+            <input type="hidden" name="postData" value="000">
+            <button type="submit" class="btn btn-success">Get stats from GitHub</button>
+        </div>
+    </form>
     <div class="container mt-2">
         <div class="row g-2">
             {{ range .data}}
