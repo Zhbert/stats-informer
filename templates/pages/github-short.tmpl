@@ -4,7 +4,17 @@
 
     {{template "navbar" .}}
 
-    {{template "github_title" .}}
+    <div class="mt-2 text-center">
+        <h2>GitHub Short Statistics</h2>
+        <div class="mt-2">Request limit: <b>{{ .respLimit}}</b> | Requests left: <b>{{ .respCount}}</b></div>
+        <div class="mt-1">Total repositories: <b>{{ .totalRepos}}</b></div>
+    </div>
+    <form method="post" action="/github-short">
+        <div class="text-center mt-1">
+            <input type="hidden" name="typeOfPage" value="000">
+            <button type="submit" class="btn btn-success">Get stats from GitHub</button>
+        </div>
+    </form>
 
     <div class="container mt-2 mb-2">
         <div class="row g-2">

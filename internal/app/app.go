@@ -37,6 +37,9 @@ func Run() {
 	route.GET("/github", controllers.GitHubPage)
 	route.POST("/github", controllers.GetGitHubPage)
 
+	route.GET("/github-short", controllers.GitHubShortPage)
+	route.POST("/github-short", controllers.GetGitHubShortPage)
+
 	route.Static("/css", "static/css")
 	route.Static("/js", "static/js")
 	route.Static("/assets", "static/assets")
