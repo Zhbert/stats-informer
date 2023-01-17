@@ -37,5 +37,23 @@ func GitHubPage(context *gin.Context) {
 		"respLimit":  limit,
 		"respCount":  count,
 		"version":    common.GetVersion(),
+		"typeOfPage": "full",
+		"totalRepos": len(reposList)})
+}
+
+// GitHubShortPage Controller of a short page with GitHub statistics
+func GitHubShortPage(context *gin.Context) {
+	reposList := config.GetListOfRepos()
+	dataOfRepos := make([]structs.ViewData, 0)
+
+	limit, count := 0, 0
+
+	context.HTML(http.StatusOK, "github-short.tmpl", gin.H{
+		"title":      "GitHub Short Projects",
+		"data":       dataOfRepos,
+		"respLimit":  limit,
+		"respCount":  count,
+		"version":    common.GetVersion(),
+		"typeOfPage": "short",
 		"totalRepos": len(reposList)})
 }
