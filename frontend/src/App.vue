@@ -2,4 +2,6 @@
   <router-view />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "~materialize-css/dist/css/materialize.min.css";
+</style>
