@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~materialize-css/dist/css/materialize.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 </style>
