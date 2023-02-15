@@ -7,7 +7,9 @@
         repositories that you have subscribed to in the service
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <router-link to="/stats" class="btn btn-outline-secondary btn-lg px-4"
+        <router-link
+          to="/statistics"
+          class="btn btn-outline-secondary btn-lg px-4"
           >Start Tracking</router-link
         >
       </div>

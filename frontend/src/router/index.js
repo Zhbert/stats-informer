@@ -7,7 +7,7 @@ const routes = [
     meta: { layout: "GreetingsLayout" },
   },
   {
-    path: "/stats",
+    path: "/statistics",
     name: "stats",
     meta: { layout: "MainLayout" },
   },
