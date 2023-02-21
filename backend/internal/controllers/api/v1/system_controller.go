@@ -17,13 +17,13 @@
 package v1
 
 import (
+	"github.com/Zhbert/stats-informer/m/v2/internal/common"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func AppVersion(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{
-		"code":    http.StatusOK,
-		"message": "test",
+		"message": common.GetVersion(),
 	})
 }
