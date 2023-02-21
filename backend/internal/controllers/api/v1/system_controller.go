@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Konstantin <Zhbert> Nezhbert.
+ * Copyright (c) 2023 Konstantin <Zhbert> Nezhbert.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package structs
+package v1
 
-// ViewData The structure of the data passed to the template
-type ViewData struct {
-	Name        string
-	GitHubURL   string
-	FullName    string
-	License     string
-	Private     bool
-	Description string
-	HomePage    string
-	Stars       int
-	Watchers    int
-	OpenIssues  int
-	Forks       int
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+func AppVersion(context *gin.Context) {
+	context.JSON(http.StatusOK, gin.H{
+		"code":    http.StatusOK,
+		"message": "test",
+	})
 }

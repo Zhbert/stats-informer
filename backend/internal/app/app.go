@@ -17,40 +17,15 @@
 package app
 
 import (
-	"fmt"
-	"github.com/Zhbert/stats-informer/m/v2/internal/common"
-	"github.com/Zhbert/stats-informer/m/v2/internal/controllers"
+	v1 "github.com/Zhbert/stats-informer/m/v2/internal/controllers/api/v1"
 	"github.com/gin-gonic/gin"
-	"log"
-	"net/http"
 )
 
 // Run The function that starts the web server
 func Run() {
 	route := gin.Default()
 
-	route.GET("/", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "main.tmpl", gin.H{
-			"title":   "Stats Informer",
-			"version": common.GetVersion()})
-	})
-	route.GET("/github", controllers.GitHubPage)
-	route.POST("/github", controllers.GetGitHubPage)
-
-	route.GET("/github-short", controllers.GitHubShortPage)
-	route.POST("/github-short", controllers.GetGitHubShortPage)
-
-	route.Static("/css", "static/css")
-	route.Static("/js", "static/js")
-	route.Static("/assets", "static/assets")
-
-	route.LoadHTMLGlob("templates/**/*")
-
-	resp, rerr := http.Get("https://api.github.com/users/octocat")
-	if rerr != nil {
-		log.Fatalln(rerr)
-	}
-	fmt.Println(resp.Header.Get("x-ratelimit-limit"))
+	route.GET("/api/v1/get-version", v1.AppVersion)
 
 	err := route.Run()
 	if err != nil {
