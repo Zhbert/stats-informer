@@ -24,6 +24,6 @@ import (
 
 func AppVersion(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{
-		"message": common.GetVersion(),
+		"version": common.GetVersion(),
 	})
 }

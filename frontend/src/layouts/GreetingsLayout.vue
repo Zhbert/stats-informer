@@ -16,15 +16,33 @@
       </div>
     </div>
     <div class="credits mt-3">
-      v.0.3 | Made with <span class="page__icon page__icon_heart"></span> by
+      v.{{ version }} | Made with
+      <span class="page__icon page__icon_heart"></span> by
       <a href="https://flant.com" target="_blank">Flant</a>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "GreetingsLayout.vue",
+  data() {
+    return {
+      version: "-",
+    };
+  },
+  mounted() {
+    axios
+      .get("/api/v1/get-version")
+      .then((response) => {
+        this.version = response.version;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
 
