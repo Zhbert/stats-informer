@@ -49,24 +49,12 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "navbar-component",
   data() {
     return {
-      version: "-",
+      version: this.$root.$data.version,
     };
-  },
-  mounted() {
-    axios
-      .get("/api/v1/get-version")
-      .then((response) => {
-        this.version = response.version;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   },
 };
 </script>
