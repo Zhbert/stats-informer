@@ -5,7 +5,6 @@
 <script>
 import MainLayout from "@/layouts/MainLayout.vue";
 import GreetingsLayout from "@/layouts/GreetingsLayout.vue";
-import axios from "axios";
 export default {
   computed: {
     layout() {
