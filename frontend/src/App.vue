@@ -5,6 +5,7 @@
 <script>
 import MainLayout from "@/layouts/MainLayout.vue";
 import GreetingsLayout from "@/layouts/GreetingsLayout.vue";
+import axios from "axios";
 export default {
   computed: {
     layout() {
@@ -13,12 +14,18 @@ export default {
   },
   data() {
     return {
-      version: "0.3",
+      version: "-",
     };
   },
   components: {
     MainLayout,
     GreetingsLayout,
+  },
+  created() {
+    axios.get("/api/v1/get-version").then((response) => {
+      this.version = response.data.version;
+      console.log(this.version);
+    });
   },
 };
 </script>
