@@ -1,28 +1,22 @@
 project: stats-informer
 configVersion: 1
 ---
-image: npm_builder
+image: frontend_builder
 from: node:lts-alpine
 git:
   - add: /frontend
     to: /app
-    includePaths:
-      - package*.json
+    excludePaths:
+      - .dockerignore
+      - .gitignore
+      - Dockerfile
+      - README.md
 shell:
   install:
     - cd /app
     - echo Install dependencies...
     - npm install
----
-image: front_builder
-fromImage: npm_builder
-git:
-  - add: /frontend
-    to: /app
-    excludePaths:
-      - package*.json
-shell:
-  install:
+  setup:
     - cd /app
     - echo Build frontend application...
     - npm run build
@@ -30,35 +24,24 @@ shell:
 image: frontend
 from: nginx:stable-alpine
 import:
-  - image: front_builder
+  - image: frontend_builder
     add: /app/dist
     to: /usr/share/nginx/html
     before: setup
 ---
-image: go_builder
+image: backend_builder
 from: golang:1.18-alpine
 git:
   - add: /backend
     to: /app
-    includePaths:
-      - go.mod
-      - go.sum
+    excludePaths:
+      - Dockerfile
 shell:
   install:
     - cd /app
     - echo Install dependencies...
     - go mod download
----
-image: backend_builder
-fromImage: go_builder
-git:
-  - add: /backend
-    to: /app
-    excludePaths:
-      - go.mod
-      - go.sum
-shell:
-  install:
+  setup:
     - cd /app
     - echo Build backend...
     - go build -o /stats app/main.go
